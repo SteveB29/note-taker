@@ -11,7 +11,7 @@ app.use(express.urlencoded( {extended: true} ));
 // makes all static files available on page load
 app.use(express.static("public"));
 
-const notes = require('./db/db.json')
+var notes = require('./db/db.json')
 const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
 
@@ -35,7 +35,11 @@ app.post('/api/notes', (req, res) => {
 
 app.delete('/api/notes/:id', (req, res) => {
   const deleteNote = req.params.id;
-  console.log(deleteNote);
+  notes = notes.filter(note => note.id != deleteNote);
+  fs.writeFileSync(
+    path.join(__dirname, './db/db.json'),
+    JSON.stringify(notes, null, 2));
+  res.json(notes);
 });
 
 app.listen(PORT, () => {

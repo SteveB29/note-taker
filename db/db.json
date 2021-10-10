@@ -1,12 +1,12 @@
 [
   {
-    "title": "Test Title",
-    "text": "Test text",
-    "id": 1
+    "title": "UUID Test",
+    "text": "Adding back in",
+    "id": "c2f1ce22-252c-4275-a615-70a11fcb3bb7"
   },
   {
-    "title": "UUID test",
-    "text": "Testing if uuid get added to db.json",
-    "id": "b3fc6985-8256-4204-b689-5dbc51964210"
+    "title": "Also Test",
+    "text": "Another test",
+    "id": "06c9cd5a-85cd-4350-aecd-30b7d732b74e"
   }
 ]

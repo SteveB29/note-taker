@@ -1,8 +1,11 @@
+// sets up express object, sets it to app, and creates PORT const
 const express = require('express');
-const apiRoutes = require('./routes/apiRoutes');
-const htmlRoutes = require('./routes/htmlRoutes');
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+// creates routes for modularized calls
+const apiRoutes = require('./routes/apiRoutes');
+const htmlRoutes = require('./routes/htmlRoutes');
 
 // express middleware
 app.use(express.json());

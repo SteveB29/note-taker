@@ -28,7 +28,12 @@ app.post('/api/notes', (req, res) => {
     path.join(__dirname, './db/db.json'),
     JSON.stringify(notes, null, 2));
   res.json(notes);
-})
+});
+
+app.delete('/api/notes/:id', (req, res) => {
+  const deleteNote = req.params.id;
+  console.log(deleteNote);
+});
 
 app.listen(PORT, () => {
   console.log(`App listening on PORT ${PORT}`);

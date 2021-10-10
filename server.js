@@ -13,6 +13,7 @@ app.use(express.static("public"));
 
 const notes = require('./db/db.json')
 const fs = require('fs');
+const { v4: uuidv4 } = require('uuid');
 
 app.get('/notes', (req, res) => {
   res.sendFile(path.join(__dirname, './public/notes.html'));
@@ -23,7 +24,9 @@ app.get('/api/notes', (req, res) => {
 });
 
 app.post('/api/notes', (req, res) => {
-  notes.push(req.body);
+  const noteToAdd = req.body;
+  noteToAdd.id = uuidv4();
+  notes.push(noteToAdd);
   fs.writeFileSync(
     path.join(__dirname, './db/db.json'),
     JSON.stringify(notes, null, 2));

@@ -1,7 +1,12 @@
 [
-    {
-        "title":"Test Title",
-        "text":"Test text",
-        "id":1
-    }
+  {
+    "title": "Test Title",
+    "text": "Test text",
+    "id": 1
+  },
+  {
+    "title": "UUID test",
+    "text": "Testing if uuid get added to db.json",
+    "id": "b3fc6985-8256-4204-b689-5dbc51964210"
+  }
 ]

@@ -5,6 +5,10 @@ const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
 const path = require('path');
 
+router.get('/notes', (req, res) => {
+  res.json(notes);
+});
+
 router.post('/notes', (req, res) => {
   const noteToAdd = req.body;
   noteToAdd.id = uuidv4();

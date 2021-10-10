@@ -1,5 +1,7 @@
 const express = require('express');
 const path = require('path');
+const apiRoutes = require('./routes/apiRoutes');
+// const htmlRoutes = require('./routes/htmlRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -11,6 +13,9 @@ app.use(express.urlencoded( {extended: true} ));
 // makes all static files available on page load
 app.use(express.static("public"));
 
+app.use('/api', apiRoutes);
+// app.use('/', htmlRoutes);
+
 var notes = require('./db/db.json')
 const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
@@ -20,25 +25,6 @@ app.get('/notes', (req, res) => {
 });
 
 app.get('/api/notes', (req, res) => {
-  res.json(notes);
-});
-
-app.post('/api/notes', (req, res) => {
-  const noteToAdd = req.body;
-  noteToAdd.id = uuidv4();
-  notes.push(noteToAdd);
-  fs.writeFileSync(
-    path.join(__dirname, './db/db.json'),
-    JSON.stringify(notes, null, 2));
-  res.json(notes);
-});
-
-app.delete('/api/notes/:id', (req, res) => {
-  const deleteNote = req.params.id;
-  notes = notes.filter(note => note.id != deleteNote);
-  fs.writeFileSync(
-    path.join(__dirname, './db/db.json'),
-    JSON.stringify(notes, null, 2));
   res.json(notes);
 });
 

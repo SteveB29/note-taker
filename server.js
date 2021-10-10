@@ -14,7 +14,7 @@ app.get('/notes', (req, res) => {
 
 app.get('/api/notes', (req, res) => {
   res.json(notes);
-})
+});
 
 app.listen(PORT, () => {
   console.log(`App listening on PORT ${PORT}`);
